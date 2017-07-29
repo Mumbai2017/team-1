@@ -13,7 +13,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 function openCity(evt, val) {
-	$.ajax({url: "demo_test.txt", success: function(result){
+	$.ajax({ 
+    type: 'GET', 
+    url: ''+val, 
+    data: { get_param: 'value' }, 
+    dataType: 'json',
+    success: function (data) { 
+        $.each(data, function(index, element) {
+            $('body').append($('<div>', {
+                text: element.name
+            }));
+        });
+    }
+});
 }
 </script>
 <style>
