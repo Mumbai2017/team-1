@@ -106,6 +106,10 @@ def lesson_plan():
 	except Exception as e:
 		raise e
 
+@application.route("/video_upload", methods = ["GET", "POST"])
+def video_upload():
+	return render_template("video_upload.html")
+
 @application.route("/lesson_detail", methods = ["GET", "POST"])
 @login_required
 def lesson_detail():
@@ -124,5 +128,5 @@ def logout():
     return redirect(url_for('login'))
 if __name__ == "__main__":
 	application.run(debug=True)
-	application.run(port=8080)
+	application.run(host="0.0.0.0", port=8080)
 
