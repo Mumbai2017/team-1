@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 
 application = Flask(__name__)
@@ -25,13 +25,13 @@ def signup():
 	try:
 		if request.method == "POST":
 			session = DBSession()
-			email_value = request.form["email"]
-			name_value = request.form["username"]
-			password_value = request.form["password"]
-			location_value = request.form["location"]
-			unit_preferred_value = request.form["unit"]
-			phone_number_value = request.form["phone"]
-			school_value = request.form["school"]
+			email_value = request.form.get("email", None)
+			name_value = request.form.get("username", None)
+			password_value = request.form.get("password", None)
+			location_value = request.form.get("location", None)
+			unit_preferred_value = request.form.get("unit", None)
+			phone_number_value = request.form.get("phone", None)
+			school_value = request.form.get("school", None)
 			user = User(email = email_value,
 						name = name_value,
 						password = password_value,
@@ -40,8 +40,11 @@ def signup():
 						school = school_value,
 						phone_number = phone_number_value
 						)
+			session.add(user)
+			session.commit()
+			return "Success"
 		else:
-			return render_template("signup.html")
+			return render_template("login.html")
 	except Exception as e:
 		raise e 
 
