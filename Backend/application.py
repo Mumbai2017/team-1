@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 
 application = Flask(__name__)
@@ -49,7 +49,7 @@ def signup():
 
 @application.route("/dashboard", methods = ["GET", "POST"])
 def dashboard():
-	return "Success"
+	return render_template('dashboard.html')
 
 if __name__ == "__main__":
-	application.run(debug = True)
+	application.run(host = "0.0.0.0", port=5000)
