@@ -19,8 +19,13 @@ def login():
 def signup():
 	try:
 		if request.method == "POST":
-			pass
+			email = request.form["email"]
+			name = request.form["name"]
+			password = request.form["password"]
+			location = request.form["location"]
+			unit_preferred = request.form["unit"]
+			phone_number = request.form["phone"]
 		else:
 			return render_template("signup.html")
 	except Exception as e:
-		raise e
+		raise e 
