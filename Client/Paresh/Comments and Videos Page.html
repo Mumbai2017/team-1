@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        .thumbnail {
+            padding:0px;
+        }
+        .panel {
+            position:relative;
+        }
+        .panel>.panel-heading:after,.panel>.panel-heading:before{
+            position:absolute;
+            top:11px;left:-16px;
+            right:100%;
+            width:0;
+            height:0;
+            display:block;
+            content:" ";
+            border-color:transparent;
+            border-style:solid solid outset;
+            pointer-events:none;
+        }
+        .panel>.panel-heading:after{
+            border-width:7px;
+            border-right-color:#f7f7f7;
+            margin-top:1px;
+            margin-left:2px;
+        }
+        .panel>.panel-heading:before{
+            border-right-color:#ddd;
+            border-width:8px;
+        }
+    </style>
+    <script>function addComment(){
+        var userComment = document.getElementById("userComment").value;
+        document.getElementById("ui-state-default").innerHTML = userComment;
+    }</script>
+</head>
+
+<body>
+<div class="container">
+<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<div id="player"></div>
+<!-- 2. This code loads the IFrame Player API code asynchronously. -->
+<script src="https://www.youtube.com/iframe_api" async></script>
+<script>
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: 'SuUlHD4sBB4',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+    function onPlayerStateChange(event) {
+        // alert(event.data);
+    }
+    function stopVideo() {
+        player.stopVideo();
+    }
+</script>
+<Br><span class="label label-default">LABEL</span>&nbsp;&nbsp;<span class="label label-default">LABEL</span><br><Br>
+    <div class="row">
+    <div class="form-group">
+        <div class="col-sm-7"><textarea class="form-control" cols="50" rows="2" id="comment_text"></textarea></div>
+        <button class="btn btn-primary" name="comment_button">Comment</button>
+    </div></div>
+    <div class="row"><br>
+        <div class="col-sm-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>USER-NAME</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted">COMMENTED X DAYS AGO</span>
+                </div>
+                <div class="panel-body">
+                  COMMENT -- COMMENT -- COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --COMMENT -- COMMENT --<button class="btn btn-primary pull-right" name="reply_button">Reply</button>
+                </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+        </div><!-- /col-sm-5 -->
+</div>
+</div>
+</body>
+</html>
