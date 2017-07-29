@@ -46,7 +46,6 @@ class Videos(Base):
 	id = Column(Integer, primary_key = True)
 	user_id = Column(Integer, unique = False, nullable = False)
 	video_link = Column(String(100), unique = True, nullable = False)
-	tags = Column(MutableList.as_mutable(ARRAY(String(100))))
 
 class Tag(Base):
 
@@ -55,7 +54,7 @@ class Tag(Base):
 	id = Column(Integer, primary_key = True)
 	tag_value = Column(String(100), unique = False, nullable = False)
 	video_id = Column(Integer, unique = False, nullable = False)
-	
+
 class Comment(Base):
 
 	__tablename__ = "Comment"
