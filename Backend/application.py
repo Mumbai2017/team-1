@@ -1,7 +1,19 @@
-from flask import Flask, render_template, request, url_for, redirect, login_required
+from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
+from werkzeug import secure_filename
+import os
+from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user 
 
 application = Flask(__name__)
+application.config['UPLOAD_FOLDER'] = "uploads/"
+application.secret_key = 'super secret key'
+login_manager = LoginManager()
+login_manager.init_app(application)
+login_manager.login_view = "login"
+
+@login_manager.user_loader
+def load_user(userid):
+    return User(userid)
 
 @application.route("/", methods = ["GET", "POST"])
 @application.route("/login", methods = ["GET", "POST"])
@@ -13,7 +25,8 @@ def login():
 			password_value = request.form["password"]
 			user = session.query(User).filter_by(email = username, password = password_value).first()
 			if user is not None:
-				return redirect(url_for('dashboard'))
+				login_user(user)
+				return redirect(url_for("dashboard"))
 		else:
 			return render_template("login.html")
 	except Exception as e:
@@ -41,15 +54,56 @@ def signup():
 						)
 			session.add(user)
 			session.commit()
-			return "Success"
+			return redirect(url_for('dashboard'))
 		else:
 			return render_template("login.html")
 	except Exception as e:
 		raise e 
 
+
 @application.route("/dashboard", methods = ["GET", "POST"])
+@login_required
 def dashboard():
 	return render_template('dashboard.html')
 
+@application.route("/lesson_plan", methods = ["GET", "POST"])
+def lesson_plan():
+	try:
+		if request.method == "POST":
+			session = DBSession()
+			unit_value = request.form["unit"]
+			title_value = request.form["title"]
+			purpose_value = request.form["purpose"]
+			grade_value = request.form["grade"]
+			description_value = request.form["description"]
+			time_value = request.form["time"]
+			user_id_value = 1
+			file = request.files["video"]
+			file.save(os.path.join("uploads", secure_filename(file.filename)))
+			lesson_plan = LessonPlan(unit = unit_value,
+									title = title_value,
+									purpose = purpose_value,
+									class_value = grade_value,
+									user_id = user_id_value,
+									description = description_value,
+									timestamp = time_value)
+			session.add(lesson_plan)
+			added_lesson_plans = session.query(LessonPlan).all()
+			pic = Pics(path = application.config["UPLOAD_FOLDER"] + file.filename, lesson_id = added_lesson_plans[-1].id)
+			print application.config["UPLOAD_FOLDER"] + file.filename,
+			session.add(pic)
+			session.commit()
+			return "Success"
+		else:
+			return render_template("create_lesson.html")
+	except Exception as e:
+		raise e
+
+@application.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 if __name__ == "__main__":
-	application.run(host = "0.0.0.0", port=5000)
+	application.run(debug=True)
+
