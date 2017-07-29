@@ -140,27 +140,30 @@
 	border-color: #bce8f1;
 	border-bottom-color: transparent;
 }
-.form-actions {
-    margin: 0;
-    background-color: transparent;
-    text-align: center;
-}
-
-/code.jquery.com/jquery-3.2.1.min.js></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     </style>
-    <script src=https:/
-<script type="text/javascript">
+	
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+	$(document).ready(function () {
+		
+		var currentdate = new Date(); 
+var datetime = "" + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+				
+		//$("time").val(datetime);
+		document.getElementById('time').value=datetime;
+		document.getElementById('time').style.visibility='hidden';
 
-$(document).ready(function(){
-    if($("#panel").text()=="")
-    {
-      
-      }
-    });
-</script>
-
+})
+	</script>
 </head>
 <body>
 <div class="container">
@@ -168,45 +171,46 @@ $(document).ready(function(){
         <h1>CEQUE</h1>
         <p>Hello User!</p>
     </div>
-    <div class="col-md-12">
-        <div class="col-md-4">
-        <button class="btn btn-success">Create New</button>
-    </div>
+    
     </div>
     <br>
     <br>
-    <div class="col-md-12" id="panel">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-                 
-              </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-              </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-              </div>
-            </div>
-        </div>
+    <div class="container">
+	<h2>Lesson Plan</h2>
+	<form action="/.php" name="add_lesson">
+    <div class="form-group">
+      <label for="email">Unit:</label>
+      <input type="email" class="form-control" id="unit" placeholder="Enter Unit" name="unit">
     </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter Tile" name="title">
+    </div>
+	<div class="form-group">
+      <label for="purpose">Purpose:</label>
+      <input type="text" class="form-control" id="purpose" placeholder="Enter Purpose" name="purpose">
+    </div>
+	<div class="form-group">
+      <label for="grade">Class/Grade:</label>
+      <input type="text" class="form-control" id="grade" placeholder="Enter Grade" name="grade">
+    </div>
+	<div class="form-group">
+      <label for="description">Description:</label>
+      <input type="textarea" class="form-control" id="description" placeholder="Enter Description" name="description" >
+    </div>
+	<div class="form-group">
+      <input type="text" class="form-control" id="time" placeholder="" name="time">
+    </div>
+	<div class="form-group">
+        <input type="file" name="video">
+    </div>
+    <button class="btn btn-primary">Upload</button>
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 </div>
-<center><h1 hidden="true">No lesson plans to display</h1></center>
+</div>
 <br/>
+
 </body>
 </html>

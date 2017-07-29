@@ -51,5 +51,32 @@ def signup():
 def dashboard():
 	return render_template('dashboard.html')
 
+@application.route("/lesson_plan", methods = ["GET", "POST"])
+def lesson_plan():
+	try:
+		if request.method == "POST":
+			session = DBSession()
+			unit_value = request.form["unit"]
+			title_value = request.form["title"]
+			purpose_value = request.form["purpose"]
+			grade_value = request.form["grade"]
+			description_value = request.form["description"]
+			time_value = request.form["time"]
+			user_id_value = 1
+			lesson_plan = LessonPlan(unit = unit_value,
+									title = title_value,
+									purpose = purpose_value,
+									class_value = grade_value,
+									user_id = user_id_value,
+									description = description_value,
+									timestamp = time_value)
+			session.add(lesson_plan)
+			session.commit()
+			return "Success"
+		else:
+			return render_template("create_lesson.html")
+	except Exception as e:
+		raise e
+
 if __name__ == "__main__":
 	application.run(host = "0.0.0.0", port=5000)
