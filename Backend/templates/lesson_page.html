@@ -158,7 +158,7 @@
 <div class="container">
     <div class="page-header">
         <h1>CEQUE</h1>
-        <p>Hello {{ current_user.name }}</p>
+        <p>Hello {{ current_user.get_name() }}</p>
     </div>
     <div class="col-md-12">
         <div class="col-md-4">
@@ -168,7 +168,7 @@
     </div>
     <br>
     <br>
-    <div class="col-md-12" id="data" hidden="true">
+    <div class="col-md-12" id="data" hidden="truex`">
        <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
            <div class="form-group">
                 <input type="file" name="video">
@@ -191,11 +191,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#videos").click(function(){
-            $("#revesions").hide();
+            $("#revisions").hide();
             $("#data").show();
         });
         $("#revision").click(function(){
-            $("#revesions").show();
+            $("#revisions").show();
             $("#data").hide();
         })
     });
