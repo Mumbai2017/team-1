@@ -149,21 +149,20 @@
     text-align: center;
 }
     </style>
-    <script src=https:/
-<script type="text/javascript">
-</script>
-
 </head>
 <body>
 <div class="container">
     <div class="page-header">
         <h1>CEQUE</h1>
-        <p>Hello {{ current_user.get_name() }}</p>
+        <p>Hello Teacher</p>
     </div>
     <div class="col-md-12">
         <div class="col-md-4">
             <button class="btn btn-info" id="revision">Revisions</button>
-            <button class="btn btn-success" id="videos">Videos</button>
+            <button class="btn btn-success" id="videos">Videos for Lesson Plan</button>
+        </div>
+        <div class="col-md-4 col-md-right">
+            <a href="{{ url_for('video_upload') }}"><button class="btn btn-success">Upload new Video</button><a>
         </div>
     </div>
     <br>
@@ -177,7 +176,7 @@
         </form>
     </div>
     <div  class="col-md-12" id="revisions">
-        Revesions
+        Revisions
     </div>
     </div>
     <br>
@@ -187,7 +186,6 @@
 <br/>
 </body>
 </html>
-
 <script type="text/javascript">
     $(document).ready(function(){
         $("#videos").click(function(){
@@ -197,6 +195,7 @@
         $("#revision").click(function(){
             $("#revisions").show();
             $("#data").hide();
-        })
-    });
+        })      
+});
 </script>
+
