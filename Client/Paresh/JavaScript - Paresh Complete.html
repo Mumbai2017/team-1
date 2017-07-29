@@ -1,0 +1,89 @@
+<html><head>
+<title>Checkout</title>
+<script type="text/javascript">
+      function validate()
+      {
+      
+         if( document.myForm.first_name.value == "" || !/^[a-zA-Z]*$/g.test(document.myForm.first_name.value))
+         {
+            alert( "Invalid First Name. Should contain only characters." );
+            document.myForm.first_name.focus() ;
+            return false;
+         }
+		 
+		 if( document.myForm.last_name.value == "" || !/^[a-zA-Z]*$/g.test(document.myForm.last_name.value))
+         {
+            alert( "Invalid Last Name. Should contain only characters." );
+            document.myForm.last_name.focus() ;
+            return false;
+         }
+         
+		 var emailID = document.myForm.email.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct email-ID.")
+            document.myForm.email.focus() ;
+            return false;
+         }
+		 if( document.myForm.rating.value == "-1" )
+         {
+            alert( "Please provide a Rating." );
+            return false;
+         }
+      }
+</script>
+</head><body bgcolor="lightgrey">
+<font size=72><center>Review Form</center></font>
+<form action="/cgi-bin/test.cgi" name="myForm" onsubmit="return(validate());">
+<table width="450px">
+</tr>
+<tr>
+ <td valign="top">
+  <label for="first_name">First Name *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="first_name" maxlength="50" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top"">
+  <label for="last_name">Last Name *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="last_name" maxlength="50" size="30">
+ </td>
+</tr>
+<tr><td>Gender </td><td><input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female</td></tr>
+<tr>
+ <td valign="top">
+  <label for="email">Email Address *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="email" maxlength="80" size="30">
+ </td>
+</tr>
+<tr><td><label>Rating *</td><td>
+<select id="rating" name="rating">
+<option value="-1" selected="selected">[Select option]</option>
+<option value="1">1</option>
+<option value="2" >2</option>
+<option value="3" >3</option>
+<option value="4">4</option>
+<option value="5" >5</option>
+</select>
+</label> </td></tr>
+<tr>
+ <td valign="top">
+  <label for="description">Description of Review</label>
+ </td>
+ <td valign="top">
+  <textarea  name="description" maxlength="1000" cols="25" rows="6"></textarea>
+ </td>
+</tr>
+</table>
+<input type="submit" value="Submit" />
+</form>

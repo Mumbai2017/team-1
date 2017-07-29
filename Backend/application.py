@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 from werkzeug import secure_filename
 import os
-from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user 
+from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user, current_user
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "uploads/"
@@ -10,10 +10,13 @@ application.secret_key = 'super secret key'
 login_manager = LoginManager()
 login_manager.init_app(application)
 login_manager.login_view = "login"
-
+login_manager.session_protection = "strong"
 @login_manager.user_loader
 def load_user(userid):
-    return User(userid)
+    #return User(userid)
+    user = User()
+    user.id = userid
+    return user
 
 @application.route("/", methods = ["GET", "POST"])
 @application.route("/login", methods = ["GET", "POST"])
@@ -77,7 +80,8 @@ def lesson_plan():
 			grade_value = request.form["grade"]
 			description_value = request.form["description"]
 			time_value = request.form["time"]
-			user_id_value = 1
+			user_id_value = current_user.id
+			print user_id
 			file = request.files["video"]
 			file.save(os.path.join("uploads", secure_filename(file.filename)))
 			lesson_plan = LessonPlan(unit = unit_value,
