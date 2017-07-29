@@ -2,9 +2,19 @@ from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 from werkzeug import secure_filename
 import os
+from flask.ext.login import LoginManager, UserMixin,login_required, login_user, logout_user 
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "uploads/"
+
+login_manager = LoginManager()
+login_manager.init_app(application)
+login_manager.login_view = "login"
+
+@login_manager.user_loader
+def load_user(userid):
+    return User(userid)
+
 @application.route("/", methods = ["GET", "POST"])
 @application.route("/login", methods = ["GET", "POST"])
 def login():
