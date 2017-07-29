@@ -140,6 +140,12 @@
 	border-color: #bce8f1;
 	border-bottom-color: transparent;
 }
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
 
 
     </style>
@@ -147,12 +153,23 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="page-header">
-        <h1>Ceque<span class="pull-right label label-default">:)</span></h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Home</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">CEQUE</a></li>
+      <li><a href="#">Profile</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+   
     
-        <div class="col-md-10">
+        <div class="col-md-50">
             <div class="panel with-nav-tabs panel-primary">
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
@@ -172,8 +189,12 @@
                 </div>
             </div>
         </div>
+<div class="form-actions">
+    <button type="submit" class="btn">CREATE LESSON PLAN</button>
+</div>        
 	</div>
 </div>
+
 <br/>
 <script type="text/javascript">
 
