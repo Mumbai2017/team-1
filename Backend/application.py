@@ -13,8 +13,7 @@ def login():
 			password_value = request.form["password"]
 			user = session.query(User).filter_by(email = username, password = password_value).first()
 			if user is not None:
-				print username
-				print password_value
+				return redirect(url_for('dashboard'))
 		else:
 			return render_template("login.html")
 	except Exception as e:
@@ -48,6 +47,9 @@ def signup():
 	except Exception as e:
 		raise e 
 
+@application.route("/dashboard", methods = ["GET", "POST"])
+def dashboard():
+	return "Success"
 
 if __name__ == "__main__":
 	application.run(debug = True)
