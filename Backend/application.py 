@@ -1,11 +1,12 @@
 from flask import Flask
-from database_setup import Pics LessonPlan, User, Videos, Tag, Comment, 
+from database_setup import Pics LessonPlan, User, Videos, Tag, Comment,DBSession 
 application = Flask(__name__)
 
 @application.route("/login", methods = ["GET", "POST"])
 def login():
 	try:
 		if request.method == "POST":
+			session = DBSession()
 			username = request.form["username"]
 			password = reques.form["password"]
 			print username
@@ -19,6 +20,7 @@ def login():
 def signup():
 	try:
 		if request.method == "POST":
+			session = DBSession()
 			email = request.form["email"]
 			name = request.form["name"]
 			password = request.form["password"]
