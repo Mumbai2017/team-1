@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 
 application = Flask(__name__)
