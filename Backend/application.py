@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 from werkzeug import secure_filename
 import os
-from flask.ext.login import LoginManager, UserMixin,login_required, login_user, logout_user 
+from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user 
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "uploads/"
@@ -98,7 +98,7 @@ def lesson_plan():
 	except Exception as e:
 		raise e
 
-@app.route("/logout")
+@application.route("/logout")
 @login_required
 def logout():
     logout_user()
