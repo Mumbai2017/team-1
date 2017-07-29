@@ -43,3 +43,7 @@ def signup():
 			return render_template("signup.html")
 	except Exception as e:
 		raise e 
+
+
+if __name__ == "__main__":
+	application.run(debug = True)
