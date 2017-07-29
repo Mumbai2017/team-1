@@ -126,13 +126,17 @@ def lesson_detail():
 def add_video(videoid):
 	try:
 		session = DBSession()
-		video = Videos(user_id = current_user.get_id(), video_link = "https://www.youtube.com/embed/" + videoid)
+		video = Videos(user_id = current_user.get_id(), video_link = videoid)
 		session.add(video)
 		session.commit()
 		return redirect(url_for("lesson_detail"))
 	except Exception as e:
 		raise e
 
+@application.route("/video_detail/<link>", methods = ["GET"])
+def video_detail(link):
+	print link
+	return render_template("comments.html", video_link = "https://www.youtube.com/embed/" + link)
 @application.route("/logout")
 @login_required
 def logout():

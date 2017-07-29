@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>CEQE</title>
+    <title>CEQUE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -160,7 +160,6 @@
 <div class="container">
     <div class="page-header">
         
-        
     </div>
 	<p>Hello Teacher</p>
     <div class="col-md-12">
@@ -179,14 +178,16 @@
         <div class="col-md-12">
             <div class="row">
                 {% for video in videos %}
+                {% set placeholder_text = ["https://www.youtube.com/embed", video.video_link ] %}
                     <div class="col-md-4">
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <a href="{{}}"><h3 class="panel-title">Video</h3></a>
+                            <a href="{{ url_for ('video_detail', link = video.video_link ) }}">
+                            <h3 class="panel-title">Video</h3></a>
                           </div>
                           <div class="panel-body">
                              <iframe width="320" height="250"
-                                src="{{ video.video_link }}">
+                                src="{{ placeholder_text | join('/') }}">
                              </iframe>
                           </div>
                         </div>
