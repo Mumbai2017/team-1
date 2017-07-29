@@ -174,25 +174,33 @@
     </div>
     <br>
     <br>
-    <div class="col-md-12" id="data" hidden="truex`">
-       <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
-           <div class="form-group">
-                <input type="file" name="video">
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form><br>
-		<div id="videos">
-		<div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                
-                            </div>
-                            <div class="data">
-                                <h6><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h6>
-                                
-                            </div>
+    <div id="data">
+        {% if videos | length >= 1 %}
+        <div class="col-md-12">
+            <div class="row">
+                {% for video in videos %}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <a href="{{}}"><h3 class="panel-title">Video</h3></a>
+                          </div>
+                          <div class="panel-body">
+                             <iframe width="320" height="250"
+                                src="{{ video.video_link }}">
+                             </iframe>
+                          </div>
                         </div>
-    </div></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <center><p>No Videos Uploaded</p></center>
+        </div>
+        {% endif %}
+        </div>
+    </div>
     <div  class="col-md-12" id="revisions">
         Revisions
     </div>
