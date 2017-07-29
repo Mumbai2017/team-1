@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -25,7 +25,7 @@ class LessonPlan(Base):
 	class_value = Column(String(10), unique = False)
 	user_id = Column(Integer, unique = False)
 	description = Column(String(10000), unique = False, nullable = False)
-	timestamp = Column(Stirng(100), unique = False, nullable = False)
+	timestamp = Column(String(100), unique = False, nullable = False)
 
 class User(Base):
 
@@ -46,4 +46,16 @@ class Videos(Base):
 	id = Column(Integer, primary_key = True)
 	user_id = Column(Integer, unique = False, nullable = False)
 	video_link = Column(String(100), unique = True, nullable = False)
-	tags = COlumn(ARRAY(String(100)), unique = False, nullable = True)
+	tags = Column(ARRAY(String(100)), unique = False, nullable = True)
+
+class Comment(Base):
+
+	__tablename__ = "Comment"
+
+	id = Column(Integer, primary_key = True)
+	data = Column(Text, unique = False, nullable = False)
+	timestamp = Column(String(100), unique = False, nullable = False)
+	video_id = Column(Integer, unique = False, nullable = False)
+	user_id = Column(Integer, unique = False, nullable = False)
+	parent_id = Column(Integer, unique = False, nullable = True)
+	
