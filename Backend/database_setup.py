@@ -49,6 +49,7 @@ class Videos(Base):
 	id = Column(Integer, primary_key = True, autoincrement=True)
 	user_id = Column(Integer, unique = False, nullable = False)
 	video_link = Column(String(100), unique = True, nullable = False)
+	
 
 class Tag(Base):
 
