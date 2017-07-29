@@ -11,6 +11,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>Free Mad Web Template | Home :: w3layouts</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  
 <script>
 function openCity(evt, val) {
 	$.ajax({ 
@@ -28,46 +32,7 @@ function openCity(evt, val) {
 });
 }
 </script>
-<style>
-body {font-family: "Lato", sans-serif;}
 
-/* Style the tab */
-div.widget {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-div.widget button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-div.widget button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-div.widget button.active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-</style>
 </head>
 <body>
             <div class="wrap">
@@ -80,7 +45,7 @@ div.widget button.active {
                         <div class="search-box">
                             <form action="#">
                                 <input type="text">
-                                <input type="submit" value="">
+                                <input type="submit" value="hello">
                             </form>
                         </div>
                         <div class="clearFloat"></div>
@@ -95,13 +60,18 @@ div.widget button.active {
                     <div class="clearFloat"></div>
                     <div class="part">
 						<div class="widget">
-                        <ul>
-                            <li><button onclick="openCity(event,'revisions') class="tablinks">Revisions</button></li>
-                            <li><button onclick="openCity(event,'videos') class="tablinks">Videos</a></li>
+                        
+                            <button onclick="openCity(event,'revisions')" class="btn btn-success">Revisions</button>
+                            <button onclick="openCity(event,'videos')" class="btn btn-success">Videos</button>
                             
-                        </ul>
+                        
                     </div>
-                        <h2>Most Recent</h2>
+					<div id="revisions">
+						
+					</div>
+					<div id="videos">
+					</div>
+                        
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
