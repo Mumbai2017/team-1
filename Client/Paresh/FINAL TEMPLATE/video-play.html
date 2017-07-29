@@ -62,23 +62,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="txt-center margin-top-18">
                 <a href="#"><img src="images/ad_728x90.png" alt=""></a>
             </div>
-            <div class="clearFloat"></div>
             <div class="part">
                 <h1><a href="#">Video Title</a></h1>
                 <div class="player">
-                    <div class="video"><img src="http://lorempixel.com/595/300/" alt=""></div>
-                    <div class="share">
-                        <div class="title">Share this</div>
-                        <ul>
-                            <li><a href="#"><span class="icon like"></span> Like</a></li>
-                            <li><a href="#"><span class="icon fb"></span> Share</a></li>
-                            <li><a href="#"><span class="icon twitter"></span> Tweet</a></li>
-                            <li><a href="#"><span class="icon stumble"></span> Stumble upon</a></li>
-                            <li><a href="#comment"><span class="icon comments"></span> comment</a></li>
-                            <li><span class="icon views"></span> 200 Views</li>
-                        </ul>
-                    </div>
-                    <div class="clearFloat"></div>
+                    <div class="video"><div id="player"></div>
+                        <script src="https://www.youtube.com/iframe_api" async></script>
+                        <script>
+                            // 3. This function creates an <iframe> (and YouTube player)
+                            //    after the API code downloads.
+                            var player;
+                            function onYouTubeIframeAPIReady() {
+                                player = new YT.Player('player', {
+                                    height: '390',
+                                    width: '640',
+                                    videoId: 'SuUlHD4sBB4',
+                                    events: {
+                                        'onReady': onPlayerReady,
+                                        'onStateChange': onPlayerStateChange
+                                    }
+                                });
+                            }
+                            function onPlayerReady(event) {
+                                event.target.playVideo();
+                            }
+                            function onPlayerStateChange(event) {
+                                // alert(event.data);
+                            }
+                            function stopVideo() {
+                                player.stopVideo();
+                            }
+                        </script></div>
+                    <div class="clearFloat"></div><br><Br><br><Br><BR><Br>
                     <div class="desc">
                         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                     </div>
