@@ -1,5 +1,5 @@
 from flask import Flask
-
+from database_setup import Pics LessonPlan, User, Videos, Tag, Comment, 
 application = Flask(__name__)
 
 @application.route("/login", methods = ["GET", "POST"])
