@@ -2,9 +2,19 @@ from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 from werkzeug import secure_filename
 import os
+from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user 
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "uploads/"
+
+login_manager = LoginManager()
+login_manager.init_app(application)
+login_manager.login_view = "login"
+
+@login_manager.user_loader
+def load_user(userid):
+    return User(userid)
+
 @application.route("/", methods = ["GET", "POST"])
 @application.route("/login", methods = ["GET", "POST"])
 def login():
@@ -49,7 +59,9 @@ def signup():
 	except Exception as e:
 		raise e 
 
+
 @application.route("/dashboard", methods = ["GET", "POST"])
+@login_required
 def dashboard():
 	return render_template('dashboard.html')
 
@@ -86,6 +98,11 @@ def lesson_plan():
 	except Exception as e:
 		raise e
 
+@application.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 if __name__ == "__main__":
 	application.run(debug=True)
 

@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from flask_login import UserMixin
 
 Base = declarative_base()
 
@@ -27,7 +28,7 @@ class LessonPlan(Base):
 	description = Column(String(10000), unique = False, nullable = False)
 	timestamp = Column(String(100), unique = False, nullable = False)
 
-class User(Base):
+class User(Base, UserMixin):
 
 	__tablename__ = "User"
 
