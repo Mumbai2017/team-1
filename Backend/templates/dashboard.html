@@ -165,7 +165,7 @@ $(document).ready(function(){
 <div class="container">
     <div class="page-header">
         <h1>CEQUE</h1>
-        <p>Hello User!</p>
+        <p>Hello {{ current_user.name }}</p>
     </div>
     <div class="col-md-12">
         <div class="col-md-4">
@@ -176,49 +176,19 @@ $(document).ready(function(){
     <br>
     {% if plans | length >= 1 %}
     <div class="col-md-12" id="panel">
-        <div class="col-md-4">
     <div class="row">
-        <div class="col-md-3">
+        {% for plan in plans %}
+        <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
+                <h3 class="panel-title">{{ plan.title }}</h3>
               </div>
               <div class="panel-body">
-                 
+                 {{ plan.description }}
               </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-              </div>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>NOTIFICATIONS</strong>
-                    <div class="panel-body">
-                        <div class="alert alert-info fade in">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <strong> NOTI NOTI </strong>
-                        </div>
-                    </div><!-- /panel-body -->
-                </div></div><!-- /panel panel-default --></div>
-
+        {% endfor %}
     </div>
     {% else %}
     <div>
