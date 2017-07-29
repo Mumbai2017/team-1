@@ -41,6 +41,7 @@ class User(Base, UserMixin):
 	school = Column(String(1000), unique = False, nullable = False)
 	phone_number = Column(String(10), unique = True, nullable = False)
 
+
 class Videos(Base):
 
 	__tablename__ = "Videos"
