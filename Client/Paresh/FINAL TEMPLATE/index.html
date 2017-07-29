@@ -16,7 +16,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   
   
 <script>
-function openCity(evt, val) {
+function openVid() {
+	document.getElementByclassName("videos").style.visibility="visible";
+	document.getElementByclassName("revisions").style.visibility="hidden";
 	$.ajax({ 
     type: 'GET', 
     url: ''+val, 
@@ -30,6 +32,11 @@ function openCity(evt, val) {
         });
     }
 });
+}
+function openRev(){
+	document.getElementByclassName("videos").style.visibility="hidden";
+	document.getElementByclassName("revisions").style.visibility="visible";
+	
 }
 </script>
 
@@ -61,118 +68,79 @@ function openCity(evt, val) {
                     <div class="part">
 						<div class="widget">
                         
-                            <button onclick="openCity(event,'revisions')" class="btn btn-success">Revisions</button>
-                            <button onclick="openCity(event,'videos')" class="btn btn-success">Videos</button>
-                            
+                            <button onclick="openRev()" class="btn btn-success">Revisions</button>
+                            <button onclick="openVid()" class="btn btn-success">Videos</button>
+                        </div>
                         
                     </div>
-					<div id="revisions">
+					<div class="revisions">
 						
 					</div>
-					<div id="videos">
-					</div>
+					<div class="videos">
+					
                         
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
                         <div class="clearFloat"></div>
                         <div class="grid">
                             <div class="preview">
                                 <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
+                                
                             </div>
                             <div class="data">
                                 <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
+                                
                             </div>
                         </div>
-                        <div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
-                            </div>
-                            <div class="data">
-                                <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
-                            </div>
-                            <div class="data">
-                                <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
-                            </div>
-                            <div class="data">
-                                <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                <div class="time">00.00</div>
-                            </div>
-                            <div class="data">
-                                <h3><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h3>
-                                <div class="category"><span class="icon"></span> <a href="#">Tag name</a>, <a href="#">Tag</a></div>
-                            </div>
-                        </div>
+                     
                         <div class="clearFloat"></div>
                         
                         <div class="clearFloat"></div>
