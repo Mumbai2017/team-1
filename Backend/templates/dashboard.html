@@ -140,34 +140,29 @@
 	border-color: #bce8f1;
 	border-bottom-color: transparent;
 }
-<<<<<<< HEAD:Client/Pooja_dashboard/panels_with_nav_tabs.html
 .form-actions {
     margin: 0;
     background-color: transparent;
     text-align: center;
 }
 
-
-
-=======
->>>>>>> cf34a49504745efa219e4d3c1a04e08263212ac5:Backend/templates/dashboard.html
-    </style>
-    <script src=https://code.jquery.com/jquery-3.2.1.min.js></script>
+/code.jquery.com/jquery-3.2.1.min.js></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+    </style>
+    <script src=https:/
 <script type="text/javascript">
 
 $(document).ready(function(){
-    if($("#tab1primary").text()!="")
+    if($("#panel").text()=="")
     {
-        $("#btn").hide();
-    }
+      
+      }
     });
 </script>
 
 </head>
 <body>
-<<<<<<< HEAD:Client/Pooja_dashboard/panels_with_nav_tabs.html
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -181,31 +176,8 @@ $(document).ready(function(){
   </div>
 </nav>
 
-<div class="container">
-   
-    
-        <div class="col-md-50">
-            <div class="panel with-nav-tabs panel-primary">
-                <div class="panel-heading">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab1primary" data-toggle="tab">Previous</a></li>
-                            <li><a href="#tab2primary" data-toggle="tab">Next</a></li>
-                                                      </li>
-                        </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1primary"></div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-<div class="form-actions">
-    <button type="submit" id="btn" class="btn1">CREATE LESSON PLAN</button>
-</div>        
+
 	</div>
-=======
 <div class="container">
     <div class="page-header">
         <h1>CEQUE</h1>
@@ -218,14 +190,14 @@ $(document).ready(function(){
     </div>
     <br>
     <br>
-    <div class="col-md-12">
+    <div class="col-md-12" id="panel">
         <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Panel title</h3>
               </div>
               <div class="panel-body">
-                 Panel content
+                 
               </div>
             </div>
         </div>
@@ -235,7 +207,6 @@ $(document).ready(function(){
                 <h3 class="panel-title">Panel title</h3>
               </div>
               <div class="panel-body">
-                 Panel content
               </div>
             </div>
         </div>
@@ -245,14 +216,12 @@ $(document).ready(function(){
                 <h3 class="panel-title">Panel title</h3>
               </div>
               <div class="panel-body">
-                 Panel content
               </div>
             </div>
         </div>
     </div>
->>>>>>> cf34a49504745efa219e4d3c1a04e08263212ac5:Backend/templates/dashboard.html
 </div>
-
+<h1>No lesson plans to display</h1>
 <br/>
 </body>
 </html>
