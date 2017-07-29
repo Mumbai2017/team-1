@@ -14,7 +14,7 @@ def login():
 			user = session.query(User).filter_by(email = username, password = password_value).first()
 			if user is not None:
 				print username
-				print password
+				print password_value
 		else:
 			return render_template("login.html")
 	except Exception as e:
@@ -26,7 +26,7 @@ def signup():
 		if request.method == "POST":
 			session = DBSession()
 			email_value = request.form.get("email", None)
-			name_value = request.form.get("username", None)
+			name_value = request.form.get("name", None)
 			password_value = request.form.get("password", None)
 			location_value = request.form.get("location", None)
 			unit_preferred_value = request.form.get("unit", None)

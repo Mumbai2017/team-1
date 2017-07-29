@@ -9,7 +9,7 @@ class Pics(Base):
 
 	__tablename__ = "Pics"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	path = Column(String(100), unique = True, nullable = False)
 	lesson_id = Column(Integer, unique = False)
 
@@ -18,7 +18,7 @@ class LessonPlan(Base):
 
 	__tablename__ = "LessonPlan"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	unit = Column(String(100), unique = False)
 	title = Column(String(100), unique = False)
 	purpose = Column(String(1000), unique = False)
@@ -31,7 +31,7 @@ class User(Base):
 
 	__tablename__ = "User"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	email = Column(String(100), unique = True, nullable = False)
 	name = Column(String(100), unique = False, nullable = False)
 	password = Column(String(1000), unique = False, nullable = False)
@@ -44,7 +44,7 @@ class Videos(Base):
 
 	__tablename__ = "Videos"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	user_id = Column(Integer, unique = False, nullable = False)
 	video_link = Column(String(100), unique = True, nullable = False)
 
@@ -52,7 +52,7 @@ class Tag(Base):
 
 	__tablename__ = "Tag"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	tag_value = Column(String(100), unique = False, nullable = False)
 	video_id = Column(Integer, unique = False, nullable = False)
 
@@ -60,7 +60,7 @@ class Comment(Base):
 
 	__tablename__ = "Comment"
 
-	id = Column(Integer, primary_key = True)
+	id = Column(Integer, primary_key = True, autoincrement=True)
 	data = Column(Text, unique = False, nullable = False)
 	timestamp = Column(String(100), unique = False, nullable = False)
 	video_id = Column(Integer, unique = False, nullable = False)
