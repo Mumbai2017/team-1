@@ -10,9 +10,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Free Mad Web Template | Home :: w3layouts</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-function openCity(evt, cityName) {
-
+function openCity(evt, val) {
+	$.ajax({url: "demo_test.txt", success: function(result){
 }
 </script>
 <style>
@@ -72,13 +73,7 @@ div.widget button.active {
                         </div>
                         <div class="clearFloat"></div>
                     </header>
-                    <div class="widget">
-                        <ul>
-                            <li><button onclick="openCity(event,'Revisions') class="tablinks">Revisions</button></li>
-                            <li><button onclick="openCity(event,'Revisions') class="tablinks">Videos</a></li>
-                            
-                        </ul>
-                    </div>
+                    
                     <div class="clearFloat"></div>
                 </div>
             	<div class="content">
@@ -87,6 +82,13 @@ div.widget button.active {
                     </div>
                     <div class="clearFloat"></div>
                     <div class="part">
+						<div class="widget">
+                        <ul>
+                            <li><button onclick="openCity(event,'revisions') class="tablinks">Revisions</button></li>
+                            <li><button onclick="openCity(event,'videos') class="tablinks">Videos</a></li>
+                            
+                        </ul>
+                    </div>
                         <h2>Most Recent</h2>
                         <div class="grid">
                             <div class="preview">
