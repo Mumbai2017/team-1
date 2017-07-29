@@ -68,7 +68,7 @@ class Comment(Base):
 	user_id = Column(Integer, unique = False, nullable = False)
 	parent_id = Column(Integer, unique = False, nullable = True)
 
-engine = create_engine("sqlite:///codeforgood.db")
+engine = create_engine("sqlite:///code.db")
 Base.metadata.create_all(engine)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind = engine)

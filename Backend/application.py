@@ -85,7 +85,8 @@ def lesson_plan():
 			user_id_value = current_user.get_id()
 			print user_id_value
 			file = request.files["video"]
-			file.save(os.path.join("./uploads", secure_filename(file.filename)))
+			if file is not None:
+				file.save(os.path.join("./uploads", secure_filename(file.filename)))
 			lesson_plan = LessonPlan(unit = unit_value,
 									title = title_value,
 									purpose = purpose_value,
@@ -94,14 +95,25 @@ def lesson_plan():
 									description = description_value,
 									timestamp = time_value)
 			session.add(lesson_plan)
-			added_lesson_plans = session.query(LessonPlan).all()
-			pic = Pics(path = application.config["UPLOAD_FOLDER"] + file.filename, lesson_id = added_lesson_plans[-1].id)
-			print application.config["UPLOAD_FOLDER"] + file.filename,
-			session.add(pic)
+			if file is not None:
+				added_lesson_plans = session.query(LessonPlan).all()
+				pic = Pics(path = application.config["UPLOAD_FOLDER"] + file.filename, lesson_id = added_lesson_plans[-1].id)
+				session.add(pic)
 			session.commit()
 			return "Success"
 		else:
 			return render_template("create_lesson.html")
+	except Exception as e:
+		raise e
+
+@application.route("/lesson_detail", methods = ["GET", "POST"])
+@login_required
+def lesson_detail():
+	try:
+		if request.method == "POST":
+			pass
+		else:
+			return render_template("lesson_page.html")
 	except Exception as e:
 		raise e
 

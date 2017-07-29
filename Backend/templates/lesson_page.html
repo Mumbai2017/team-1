@@ -151,13 +151,6 @@
     </style>
     <script src=https:/
 <script type="text/javascript">
-
-$(document).ready(function(){
-    if($("#panel").text()=="")
-    {
-      
-      }
-    });
 </script>
 
 </head>
@@ -169,32 +162,21 @@ $(document).ready(function(){
     </div>
     <div class="col-md-12">
         <div class="col-md-4">
-        <a href="{{ url_for('lesson_plan') }}"><button class="btn btn-success">Create New</button></a>
-    </div>
-    </div>
-    <br>
-    <br>
-    {% if plans | length >= 1 %}
-    <div class="col-md-12" id="panel">
-    <div class="row">
-        {% for plan in plans %}
-        <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">{{ plan.title }}</h3>
-              </div>
-              <div class="panel-body">
-                 {{ plan.description }}
-              </div>
-            </div>
+            <button class="btn btn-info">Revisions</button>
+            <button class="btn btn-success">Videos</button>
         </div>
-        {% endfor %}
     </div>
-    {% else %}
-    <div>
-    <center><p>No lesson plans</p></center>
+    <div class="col-md-12">
+       <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
+    <div class="form-group">
+        <input type="file" name="video">
     </div>
-    {% endif %}
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+    </div>
+    </div>
+    <br>
+    <br>
 </div>
 <center><h1 hidden="true">No lesson plans to display</h1></center>
 <br/>
