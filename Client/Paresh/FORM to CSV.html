@@ -1,0 +1,24 @@
+<html>
+  <head>
+     <script language="javascript">
+        function WriteToFile(passForm) {
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var fileLoc = "C:\\Database.csv";
+        var file  = fso.OpenTextFile(fileLoc, 8, true,0);
+        file.writeline(passForm.FirstName.value + ',' +
+                 passForm.LastName.value);
+        file.Close();
+        alert('File created successfully at location: ' + fileLoc);
+      }
+
+    </script>
+ </head>
+ <body>
+ <p>create a csv file with following details -</p>
+ <form>
+    Type your first name: <input type="text" name="FirstName" size="20">
+    Type your last name: <input type="text" name="LastName" size="20">
+    <input type="button" value="submit" onclick="WriteToFile(this.form)">
+ </form>
+</body>
+</html>
