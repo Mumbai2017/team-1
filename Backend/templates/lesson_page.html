@@ -168,7 +168,7 @@
     </div>
     <br>
     <br>
-    <div class="col-md-12" id="data">
+    <div class="col-md-12" id="data" hidden="true">
        <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
            <div class="form-group">
                 <input type="file" name="video">
@@ -192,11 +192,11 @@
     $(document).ready(function(){
         $("#videos").click(function(){
             $("#revesions").hide();
-            $("#videos").show();
+            $("#data").show();
         });
         $("#revision").click(function(){
             $("#revesions").show();
-            $("#videos").hide();
+            $("#data").hide();
         })
     });
 </script>
