@@ -114,10 +114,22 @@ def video_upload():
 @login_required
 def lesson_detail():
 	try:
-		if request.method == "POST":
-			pass
-		else:
-			return render_template("lesson_page.html")
+		session = DBSession()
+		video_values = session.query(Videos).filter_by(user_id = current_user.get_id()).all()
+		return render_template("lesson_page.html", videos = video_values)
+	except Exception as e:
+		raise e
+
+
+@application.route("/add_video/<videoid>", methods = ["GET"])
+@login_required
+def add_video(videoid):
+	try:
+		session = DBSession()
+		video = Videos(user_id = current_user.get_id(), video_link = "https://www.youtube.com/embed/" + videoid)
+		session.add(video)
+		session.commit()
+		return redirect(url_for("lesson_detail"))
 	except Exception as e:
 		raise e
 

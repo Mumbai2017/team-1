@@ -457,6 +457,7 @@
                     var uploadResponse = JSON.parse(data);
                     $('#video-status').html('Upload complete for video ' + uploadResponse.id);
                     console.log('Upload complete for video ' + uploadResponse.id);
+                    window.location.href = "add_video/" + uploadResponse.id;
                 }.bind(this)
             });
 
