@@ -34,12 +34,17 @@ alert(1);
     }
 });
 }
-function openRev(){
-alert(2);
-	document.getElementByclassName("videos").style.visibility="hidden";
-	document.getElementByclassName("revisions").style.visibility="visible";
-	
-}
+
+
+$(document).ready(function () {
+    $("#revisions").click(function(){
+        $(".videos").hide();
+    });
+    $("#videos").click(function(){
+        $(".videos").show();
+    });
+});
+
 </script>
 
 </head>
@@ -70,8 +75,8 @@ alert(2);
                     <div class="part">
 						<div class="widget">
                         
-                            <button onclick="openRev()" class="btn btn-success">Revisions</button>
-                            <button onclick="openVid()" class="btn btn-success">Videos</button>
+                            <button id="revisions" class="btn btn-success">Revisions</button>
+                            <button id="videos" class="btn btn-success">Videos</button>
                         </div>
                         
                     </div>
