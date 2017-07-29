@@ -10,6 +10,7 @@
 </head>
 
 <body style="margin: 30px">
+<p id="video-status"></p>
     <script>
         var GoogleAuth;
         var selectedFile;
@@ -473,7 +474,8 @@
     <input id="select-file" type="file"><br><br>
     <hr>
     <center><h3><strong>Click to begin Uploading.</strong></h3>
-    <button class="btn btn-success" id="upload-file-button"><b>Upload file</b></button><br>
+    <button class="btn btn-success" id="upload-file-button"><b>Upload file</b></button>s<br>
+    <div id="video-status" style="display: inline; padding-left: 25px"></div>
     <script>
         $("#select-file-button").click(function () {
             $("#select-file").click();
