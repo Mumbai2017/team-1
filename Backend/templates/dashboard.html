@@ -175,6 +175,7 @@ $(document).ready(function(){
     </div>
     <br>
     <br>
+    {% if plans | length >= 1 %}
     <div class="col-md-12" id="panel">
         <div class="col-md-4">
             <div class="panel panel-default">
@@ -205,6 +206,11 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
+    {% else %}
+    <div>
+    <center><p>No lesson plans</p></center>
+    </div>
+    {% endif %}
 </div>
 <center><h1 hidden="true">No lesson plans to display</h1></center>
 <br/>

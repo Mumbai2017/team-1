@@ -5,7 +5,7 @@ import os
 from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user, current_user
 
 application = Flask(__name__)
-application.config['UPLOAD_FOLDER'] = "uploads/"
+application.config['UPLOAD_FOLDER'] = "./uploads/"
 application.secret_key = 'super secret key'
 login_manager = LoginManager()
 login_manager.init_app(application)
@@ -13,7 +13,6 @@ login_manager.login_view = "login"
 login_manager.session_protection = "strong"
 @login_manager.user_loader
 def load_user(userid):
-    #return User(userid)
     user = User()
     user.id = userid
     return user
@@ -67,9 +66,12 @@ def signup():
 @application.route("/dashboard", methods = ["GET", "POST"])
 @login_required
 def dashboard():
-	return render_template('dashboard.html')
+	session = DBSession()
+	lesson_plans = session.query(LessonPlan).filter_by(user_id = current_user.get_id()).all()
+	return render_template('dashboard.html', plans = lesson_plans)
 
 @application.route("/lesson_plan", methods = ["GET", "POST"])
+@login_required
 def lesson_plan():
 	try:
 		if request.method == "POST":
@@ -80,10 +82,10 @@ def lesson_plan():
 			grade_value = request.form["grade"]
 			description_value = request.form["description"]
 			time_value = request.form["time"]
-			user_id_value = current_user.id
-			print user_id
+			user_id_value = current_user.get_id()
+			print user_id_value
 			file = request.files["video"]
-			file.save(os.path.join("uploads", secure_filename(file.filename)))
+			file.save(os.path.join("./uploads", secure_filename(file.filename)))
 			lesson_plan = LessonPlan(unit = unit_value,
 									title = title_value,
 									purpose = purpose_value,
