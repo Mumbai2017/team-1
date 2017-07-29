@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, login_required
+from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
 
 application = Flask(__name__)
@@ -63,6 +63,9 @@ def lesson_plan():
 			description_value = request.form["description"]
 			time_value = request.form["time"]
 			user_id_value = 1
+			file = request.files["video"]
+			print file.filename
+			print unit_value
 			lesson_plan = LessonPlan(unit = unit_value,
 									title = title_value,
 									purpose = purpose_value,
@@ -70,8 +73,8 @@ def lesson_plan():
 									user_id = user_id_value,
 									description = description_value,
 									timestamp = time_value)
-			session.add(lesson_plan)
-			session.commit()
+			#session.add(lesson_plan)
+			#session.commit()
 			return "Success"
 		else:
 			return render_template("create_lesson.html")
@@ -79,4 +82,5 @@ def lesson_plan():
 		raise e
 
 if __name__ == "__main__":
-	application.run(host = "0.0.0.0", port=5000)
+	application.run(debug=True)
+

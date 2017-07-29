@@ -173,14 +173,12 @@ var datetime = "" + currentdate.getDate() + "/"
     </div>
     
     </div>
-    <br>
-    <br>
     <div class="container">
 	<h2>Lesson Plan</h2>
-	<form action="/.php" name="add_lesson">
+	<form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
     <div class="form-group">
       <label for="email">Unit:</label>
-      <input type="email" class="form-control" id="unit" placeholder="Enter Unit" name="unit">
+      <input type="text" class="form-control" id="unit" placeholder="Enter Unit" name="unit">
     </div>
     <div class="form-group">
       <label for="title">Title:</label>
@@ -204,7 +202,7 @@ var datetime = "" + currentdate.getDate() + "/"
 	<div class="form-group">
         <input type="file" name="video">
     </div>
-    <button class="btn btn-primary">Upload</button>
+    <!--<button class="btn btn-primary">Upload</button>-->
     
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
