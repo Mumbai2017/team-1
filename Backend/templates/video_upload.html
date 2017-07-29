@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+	.page-header{
+	background-image:url("../images/ceque-logo.jpg");
+	background-repeat: no-repeat;
+	height: 100px;
+	background-position: center; 
+
+	}
+	#select-file{
+		margin-top:8px;
+	}
+	</style>
 </head>
 
 <body style="margin: 30px">
@@ -457,12 +469,15 @@
                     var uploadResponse = JSON.parse(data);
                     $('#video-status').html('Upload complete for video ' + uploadResponse.id);
                     console.log('Upload complete for video ' + uploadResponse.id);
+                    window.location.href = "add_video/" + uploadResponse.id;
                 }.bind(this)
             });
 
             uploader.upload();
         }
     </script>
+	<div class="page-header">
+    </div>
     <center><h3><strong>Sign in to the Youtube Account before uploading.</strong></h3>
     <center><button class="btn btn-success" id="sign-in-or-out-button" style="margin-top:30px"><b>Sign In</b></button>
     <center><button class="btn btn-danger"id="revoke-access-button" style="display: none; margin-left: 25px">Revoke access</button>
@@ -474,7 +489,7 @@
     <input id="select-file" type="file"><br><br>
     <hr>
     <center><h3><strong>Click to begin Uploading.</strong></h3>
-    <button class="btn btn-success" id="upload-file-button"><b>Upload file</b></button>s<br>
+    <button class="btn btn-success" id="upload-file-button"><b>Upload file</b></button><br>
     <div id="video-status" style="display: inline; padding-left: 25px"></div>
     <script>
         $("#select-file-button").click(function () {

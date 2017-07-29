@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>CEQE</title>
+    <title>CEQUE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -148,14 +148,20 @@
     background-color: transparent;
     text-align: center;
 }
+.page-header{
+	background-image:url("../images/ceque-logo.jpg");
+	background-repeat: no-repeat;
+	height: 100px;
+	
+}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="page-header">
-        <h1>CEQUE</h1>
-        <p>Hello Teacher</p>
+        
     </div>
+	
     <div class="col-md-12">
         <div class="col-md-4">
             <button class="btn btn-info" id="revision">Revisions</button>
@@ -167,25 +173,35 @@
     </div>
     <br>
     <br>
-    <div class="col-md-12" id="data" hidden="truex`">
-       <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
-           <div class="form-group">
-                <input type="file" name="video">
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form><br>
-		<div id="videos">
-		<div class="grid">
-                            <div class="preview">
-                                <a href="video-play.html" title=""><img src="http://lorempixel.com/128/90" alt="#"></a>
-                                
-                            </div>
-                            <div class="data">
-                                <h6><a href="video-play.html">Lorem Ipsum Dolor Sit amet</a></h6>
-                                
-                            </div>
+    <div id="data">
+        {% if videos | length >= 1 %}
+        <div class="col-md-12">
+            <div class="row">
+                {% for video in videos %}
+                {% set placeholder_text = ["https://www.youtube.com/embed", video.video_link ] %}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <a href="{{ url_for ('video_detail', link = video.video_link ) }}">
+                            <h3 class="panel-title">Video</h3></a>
+                          </div>
+                          <div class="panel-body">
+                             <iframe width="320" height="250"
+                                src="{{ placeholder_text | join('/') }}">
+                             </iframe>
+                          </div>
                         </div>
-    </div></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <center><p>No Videos Uploaded</p></center>
+        </div>
+        {% endif %}
+        </div>
+    </div>
     <div  class="col-md-12" id="revisions">
         Revisions
     </div>
