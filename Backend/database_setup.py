@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.dialects.postgresql import ARRAY
 
 Base = declarative_base()
 
@@ -43,4 +44,6 @@ class Videos(Base):
 	__tablename__ = "Videos"
 
 	id = Column(Integer, primary_key = True)
-	
+	user_id = Column(Integer, unique = False, nullable = False)
+	video_link = Column(String(100), unique = True, nullable = False)
+	tags = COlumn(ARRAY(String(100)), unique = False, nullable = True)
