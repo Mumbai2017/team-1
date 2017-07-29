@@ -37,10 +37,12 @@ alert(1);
 
 $(document).ready(function () {
     $("#revisions").click(function(){
+		$(".revisions").show();
         $(".videos").hide();
     });
     $("#videos").click(function(){
         $(".videos").show();
+		$(".revisions").hide();
     });
 });
 
