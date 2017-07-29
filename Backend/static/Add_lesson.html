@@ -141,11 +141,29 @@
 	border-bottom-color: transparent;
 }
     </style>
+	
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+	$(document).ready(function () {
+		
+		var currentdate = new Date(); 
+var datetime = "" + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+				
+		//$("time").val(datetime);
+		document.getElementById('time').value=datetime;
+		document.getElementById('time').style.visibility='hidden';
+
+})
+	</script>
 </head>
 <body>
 <div class="container">
@@ -159,7 +177,7 @@
     <br>
     <div class="container">
 	<h2>Lesson Plan</h2>
-	<form action="/.php">
+	<form action="/.php" name="add_lesson">
     <div class="form-group">
       <label for="email">Unit:</label>
       <input type="email" class="form-control" id="unit" placeholder="Enter Unit" name="unit">
@@ -178,9 +196,16 @@
     </div>
 	<div class="form-group">
       <label for="description">Description:</label>
-      <input type="textarea" class="form-control" id="description" placeholder="Enter Description" name="description" rows="4">
+      <input type="textarea" class="form-control" id="description" placeholder="Enter Description" name="description" >
     </div>
-    <input type="datetime" name="time">
+	<div class="form-group">
+      <input type="text" class="form-control" id="time" placeholder="" name="time">
+    </div>
+	<div class="form-group">
+        <input type="file" name="video">
+    </div>
+    <button class="btn btn-primary">Upload</button>
+    
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
