@@ -17,6 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   
 <script>
 function openVid() {
+alert(1);
 	document.getElementByclassName("videos").style.visibility="visible";
 	document.getElementByclassName("revisions").style.visibility="hidden";
 	$.ajax({ 
@@ -34,6 +35,7 @@ function openVid() {
 });
 }
 function openRev(){
+alert(2);
 	document.getElementByclassName("videos").style.visibility="hidden";
 	document.getElementByclassName("revisions").style.visibility="visible";
 	
@@ -141,9 +143,7 @@ function openRev(){
                             </div>
                         </div>
                      
-                        <div class="clearFloat"></div>
                         
-                        <div class="clearFloat"></div>
                     </div>
                 	<div class="txt-center margin-bottom-18">
                     	<a href="#"><img src="images/ad_728x90.png" alt=""></a>
