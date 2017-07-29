@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect
 from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
+from werkzeug import secure_filename
+import os
 
 application = Flask(__name__)
-
+application.config['UPLOAD_FOLDER'] = "uploads/"
 @application.route("/", methods = ["GET", "POST"])
 @application.route("/login", methods = ["GET", "POST"])
 def login():
@@ -64,8 +66,7 @@ def lesson_plan():
 			time_value = request.form["time"]
 			user_id_value = 1
 			file = request.files["video"]
-			print file.filename
-			print unit_value
+			file.save(os.path.join("uploads", secure_filename(file.filename)))
 			lesson_plan = LessonPlan(unit = unit_value,
 									title = title_value,
 									purpose = purpose_value,
@@ -73,8 +74,12 @@ def lesson_plan():
 									user_id = user_id_value,
 									description = description_value,
 									timestamp = time_value)
-			#session.add(lesson_plan)
-			#session.commit()
+			session.add(lesson_plan)
+			added_lesson_plans = session.query(LessonPlan).all()
+			pic = Pics(path = application.config["UPLOAD_FOLDER"] + file.filename, lesson_id = added_lesson_plans[-1].id)
+			print application.config["UPLOAD_FOLDER"] + file.filename,
+			session.add(pic)
+			session.commit()
 			return "Success"
 		else:
 			return render_template("create_lesson.html")
