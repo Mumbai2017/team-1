@@ -6,7 +6,7 @@ from flask_login import LoginManager, UserMixin,login_required, login_user, logo
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "uploads/"
-
+application.secret_key = 'super secret key'
 login_manager = LoginManager()
 login_manager.init_app(application)
 login_manager.login_view = "login"
