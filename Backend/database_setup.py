@@ -25,3 +25,22 @@ class LessonPlan(Base):
 	user_id = Column(Integer, unique = False)
 	description = Column(String(10000), unique = False, nullable = False)
 	timestamp = Column(Stirng(100), unique = False, nullable = False)
+
+class User(Base):
+
+	__tablename__ = "User"
+
+	id = Column(Integer, primary_key = True)
+	email = Column(String(100), unique = True, nullable = False)
+	name = Column(String(100), unique = False, nullable = False)
+	password = Column(String(1000), unique = False, nullable = False)
+	location = Column(String(100), unique = False, nullable = False)
+	unit_preferred = Column(String(100), unique = False, nullable = False)
+	phone_number = Column(String(10), unique = True, nullable = False)
+
+class Videos(Base):
+
+	__tablename__ = "Videos"
+
+	id = Column(Integer, primary_key = True)
+	
