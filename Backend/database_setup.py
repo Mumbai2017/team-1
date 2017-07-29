@@ -37,6 +37,7 @@ class User(Base):
 	password = Column(String(1000), unique = False, nullable = False)
 	location = Column(String(100), unique = False, nullable = False)
 	unit_preferred = Column(String(100), unique = False, nullable = False)
+	school = Column(String(1000), unique = False, nullable = False)
 	phone_number = Column(String(10), unique = True, nullable = False)
 
 class Videos(Base):
