@@ -25,7 +25,8 @@ def login():
 			password_value = request.form["password"]
 			user = session.query(User).filter_by(email = username, password = password_value).first()
 			if user is not None:
-				return redirect(url_for('dashboard'))
+				login_user(user)
+				return redirect(url_for("dashboard"))
 		else:
 			return render_template("login.html")
 	except Exception as e:
@@ -53,7 +54,7 @@ def signup():
 						)
 			session.add(user)
 			session.commit()
-			return "Success"
+			return redirect(url_for('dashboard'))
 		else:
 			return render_template("login.html")
 	except Exception as e:
