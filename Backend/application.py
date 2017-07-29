@@ -80,7 +80,8 @@ def lesson_plan():
 			grade_value = request.form["grade"]
 			description_value = request.form["description"]
 			time_value = request.form["time"]
-			user_id_value = 1
+			user_id_value = current_user.id
+			print user_id
 			file = request.files["video"]
 			file.save(os.path.join("uploads", secure_filename(file.filename)))
 			lesson_plan = LessonPlan(unit = unit_value,
