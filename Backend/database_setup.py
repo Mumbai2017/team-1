@@ -28,7 +28,7 @@ class LessonPlan(Base):
 	description = Column(String(10000), unique = False, nullable = False)
 	timestamp = Column(String(100), unique = False, nullable = False)
 
-class User(Base, USer):
+class User(Base, UserMixin):
 
 	__tablename__ = "User"
 

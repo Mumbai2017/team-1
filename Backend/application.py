@@ -59,7 +59,9 @@ def signup():
 	except Exception as e:
 		raise e 
 
+
 @application.route("/dashboard", methods = ["GET", "POST"])
+@login_required
 def dashboard():
 	return render_template('dashboard.html')
 
@@ -96,6 +98,11 @@ def lesson_plan():
 	except Exception as e:
 		raise e
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 if __name__ == "__main__":
 	application.run(debug=True)
 
