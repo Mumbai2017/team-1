@@ -19,7 +19,7 @@ def login():
 	except Exception as e:
 		print e
 
-@application.route("/signup", method = ["POST, GET"])
+@application.route("/signup", method = ["POST", "GET"])
 def signup():
 	try:
 		if request.method == "POST":
