@@ -158,21 +158,26 @@
 <div class="container">
     <div class="page-header">
         <h1>CEQUE</h1>
-        <p>Hello {{ current_user.name }}</p>
+        <p>Hello {{ current_user.get_name() }}</p>
     </div>
     <div class="col-md-12">
         <div class="col-md-4">
-            <button class="btn btn-info">Revisions</button>
-            <button class="btn btn-success">Videos</button>
+            <button class="btn btn-info" id="revision">Revisions</button>
+            <button class="btn btn-success" id="videos">Videos</button>
         </div>
     </div>
-    <div class="col-md-12">
+    <br>
+    <br>
+    <div class="col-md-12" id="data" hidden="truex`">
        <form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
-    <div class="form-group">
-        <input type="file" name="video">
+           <div class="form-group">
+                <input type="file" name="video">
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+    <div  class="col-md-12" id="revisions">
+        Revesions
     </div>
     </div>
     <br>
@@ -182,3 +187,16 @@
 <br/>
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#videos").click(function(){
+            $("#revisions").hide();
+            $("#data").show();
+        });
+        $("#revision").click(function(){
+            $("#revisions").show();
+            $("#data").hide();
+        })
+    });
+</script>
