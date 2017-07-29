@@ -49,7 +49,7 @@ def signup():
 
 @application.route("/dashboard", methods = ["GET", "POST"])
 def dashboard():
-	return "Success"
+	return render_template('dashboard.html')
 
 if __name__ == "__main__":
 	application.run(debug = True)
