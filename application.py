@@ -4,6 +4,7 @@ from werkzeug import secure_filename
 import os
 from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user, current_user
 import hashlib
+import os
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = "./uploads/"
@@ -169,5 +170,6 @@ def logout():
     return redirect(url_for('login'))
 if __name__ == "__main__":
 	application.run(debug=True)
-	application.run(host="0.0.0.0", port=8080)
+	#application.run(host="0.0.0.0", port=8080)
+	application.run(host = '0.0.0.0', port = int(os.environ.get("PORT")))
 
