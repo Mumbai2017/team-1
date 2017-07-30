@@ -30,7 +30,7 @@ def login():
 			candidate = 'secret'
 			user = session.query(User).filter_by(email = username).first()
 			password_value = (hashlib.md5(request.form["password"].encode())).hexdigest()
-			if user.name == "admin@email.com":
+			if user.email == "admin@email.com":
 				session = DBSession()
 				video = session.query(Videos).all()
 				login_user(user)
