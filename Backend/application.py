@@ -26,7 +26,9 @@ def login():
 			username = request.form["username"]
 			password_value = request.form["password"]
 			user = session.query(User).filter_by(email = username, password = password_value).first()
-			if user is not None:
+			if username == "admin" and password == "admin":
+				return render_template("admin_dashboard.html")
+			elif user is not None:
 				login_user(user)
 				return redirect(url_for("dashboard"))
 		else:
@@ -134,9 +136,27 @@ def add_video(videoid):
 		raise e
 
 @application.route("/video_detail/<link>", methods = ["GET"])
+@login_required
 def video_detail(link):
-	print link
-	return render_template("comments.html", video_link = "https://www.youtube.com/embed/" + link)
+	session = DBSession()
+	comments_array = session.query(Comment).filter_by(video_id = link).all()
+	return render_template("comments.html", video_link = "https://www.youtube.com/embed/" + link, comments = comments_array)
+
+@application.route("/comments", methods = ["GET", "POST"])
+def comments():
+	try:
+		if request.method == "POST":
+			session = Session()
+			comment = request.form["comment"]
+			time = request.form["time"]
+			video = request.form["video_id"]
+			comment_value = Comment(data = comment, timestamp = time, video_id = video, user_id = current_user.get_id(), parent_id = null)
+			session.add(comment_value)
+			session.commit()
+			return redirect(url_for("video_detail" + "/" + video))
+	except Exception as e:
+		raise e
+
 @application.route("/logout")
 @login_required
 def logout():

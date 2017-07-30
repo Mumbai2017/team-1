@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+<catalog>
+	<info>
+		<name>Paresh Kalinani</name>
+		<os>100</os>
+		<sooad>100</sooad>
+		<wt>100</wt>
+		<mp>100</mp>
+		<total>400</total>
+	</info>
+	<info>
+		<name>Sahil Khan</name>
+		<os>100</os>
+		<sooad>100</sooad>
+		<wt>101</wt>
+		<mp>100</mp>
+		<total>401</total>
+	</info>
+	<info>
+		<name>Aishwarya Aryamane</name>
+		<os>101</os>
+		<sooad>100</sooad>
+		<wt>101</wt>
+		<mp>100</mp>
+		<total>402</total>
+	</info>
+	<info>
+		<name>Pranav Parab</name>
+		<os>75</os>
+		<sooad>60</sooad>
+		<wt>79</wt>
+		<mp>84</mp>
+		<total>278</total>
+	</info>
+	<info>
+		<name>Niket Kanoongo</name>
+		<os>82</os>
+		<sooad>60</sooad>
+		<wt>70</wt>
+		<mp>50</mp>
+		<total>262</total>
+	</info>
+	<info>
+		<name>Pooja Bhatia</name>
+		<os>0</os>
+		<sooad>0</sooad>
+		<wt>0</wt>
+		<mp>0</mp>
+		<total>00</total>
+	</info>
+	<info>
+		<name>Hanisha Jamtani</name>
+		<os>80</os>
+		<sooad>80</sooad>
+		<wt>80</wt>
+		<mp>80</mp>
+		<total>320</total>
+	</info>
+	<info>
+		<name>Meenu Bhatia</name>
+		<os>40</os>
+		<sooad>50</sooad>
+		<wt>60</wt>
+		<mp>70</mp>
+		<total>220</total>
+	</info>
+	<info>
+		<name>Deesha Ramchandani</name>
+		<os>60</os>
+		<sooad>70</sooad>
+		<wt>80</wt>
+		<mp>50</mp>
+		<total>220</total>
+	</info>
+	<info>
+		<name>Tanmay Rauth</name>
+		<os>100</os>
+		<sooad>99</sooad>
+		<wt>99</wt>
+		<mp>98</mp>
+		<total>396</total>
+	</info>
+	<info>
+		<name>Deesha Ramchandani</name>
+		<os>60</os>
+		<sooad>70</sooad>
+		<wt>80</wt>
+		<mp>50</mp>
+		<total>220</total>
+	</info>
+</catalog>
+
