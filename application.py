@@ -105,9 +105,8 @@ def lesson_plan():
 				added_lesson_plans = session.query(LessonPlan).all()
 				pic = Pics(path = application.config["UPLOAD_FOLDER"] + file.filename, lesson_id = added_lesson_plans[-1].id)
 				session.add(pic)
-			flash("Lesson page added!!")
 			session.commit()
-			return redirect(url_for("lesson_plan"))
+			return redirect(url_for("lesson_detail"))
 		else:
 			return render_template("create_lesson.html")
 	except Exception as e:

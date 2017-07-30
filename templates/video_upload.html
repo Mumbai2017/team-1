@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<style>
 	.page-header{
-	background-image:url("../images/ceque-logo.jpg");
+	background-image:url("static/ceque-logo.jpg");
 	background-repeat: no-repeat;
 	height: 100px;
-	background-position: center; 
+	background-position: center;
 
 	}
 	#select-file{
@@ -50,9 +50,9 @@
                 // Get API key and client ID from API Console.
                 // 'scope' field specifies space-delimited list of access scopes.
                 gapi.client.init({
-                    'apiKey': 'AIzaSyA8bDSC-Zlxh0IKIfCbMFdl7kMhS_cVfw4',
+                    'apiKey': 'AIzaSyDRCYZ5a2Mi9lidl5kqetbNm4Y88XV1N7Y',
                     'discoveryDocs': [discoveryUrl],
-                    'clientId': '592277667396-c9snqvjdq0tgh5utg13cc8ofk151vibh.apps.googleusercontent.com',
+                    'clientId': '592277667396-iln1f9h9djfhrc3d9ik4inmcgepj6sa2.apps.googleusercontent.com',
                     'scope': SCOPE
                 }).then(function () {
                     GoogleAuth = gapi.auth2.getAuthInstance();
@@ -72,7 +72,7 @@
                     $('#revoke-access-button').click(function () {
                         revokeAccess();
                     });
-                }); 
+                });
             }
             catch (err) {
                 console.log(err.message);
@@ -188,7 +188,7 @@
          */
         var RetryHandler = function () {
             this.interval = 1000; // Start at one second
-            this.maxInterval = 60 * 1000; // Don't wait longer than a minute 
+            this.maxInterval = 60 * 1000; // Don't wait longer than a minute
         };
 
         /**

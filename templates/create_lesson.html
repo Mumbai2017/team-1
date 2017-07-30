@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-        
+
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
 }
@@ -46,7 +46,7 @@
     border-color: #ddd;
 }
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a {
-    color: #777;   
+    color: #777;
 }
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
@@ -87,7 +87,7 @@
     border-color: #3071a9;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
-    color: #fff;   
+    color: #fff;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
@@ -144,10 +144,10 @@
 	background-image:url("static/ceque-logo.jpg");
 	background-repeat: no-repeat;
 	height: 100px;
-	
+
 }
     </style>
-	
+
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -155,15 +155,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
 	$(document).ready(function () {
-		
-		var currentdate = new Date(); 
+
+		var currentdate = new Date();
 var datetime = "" + currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear() + " "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
                 + currentdate.getSeconds();
-				
+
 		//$("time").val(datetime);
 		document.getElementById('time').value=datetime;
 		document.getElementById('time').style.visibility='hidden';
@@ -174,19 +174,10 @@ var datetime = "" + currentdate.getDate() + "/"
 <body>
 <div class="container">
     <div class="page-header">
-        
-        
     </div>
-    
+
     </div>
     <div class="container">
-    {% with messages = get_flashed_messages() %}
-       {% if messages %}
-          {% for message in messages %}
-             <p class="alert alert-success">{{ message }}<p>
-          {% endfor %}
-       {% endif %}
-    {% endwith %}
 	<h2>Lesson Plan</h2>
 	<form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
     <div class="form-group">
@@ -229,7 +220,7 @@ var datetime = "" + currentdate.getDate() + "/"
         <input type="file" name="video">
     </div>
     <!--<button class="btn btn-primary">Upload</button>-->
-    
+
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
