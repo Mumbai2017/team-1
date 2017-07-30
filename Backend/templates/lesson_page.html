@@ -203,7 +203,33 @@
         </div>
     </div>
     <div  class="col-md-12" id="revisions">
-        Revisions
+        <div id="revise">
+        {% if revision | length >= 1 %}
+        <div class="col-md-12">
+            <div class="row">
+                {% for revision in revisions %}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Images</h3></a>
+                          </div>
+                          <div class="panel-body">
+                             <img width="320" height="250"
+                                src="rev.pic_link">
+                             </img>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <center><p>No Images Uploaded</p></center>
+        </div>
+        {% endif %}
+        </div>
+    </div>
     </div>
     </div>
     <br>
@@ -215,6 +241,8 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
+         $("#revisions").hide();
+            $("#data").show();
         $("#videos").click(function(){
             $("#revisions").hide();
             $("#data").show();
