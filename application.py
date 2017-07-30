@@ -33,6 +33,9 @@ def login():
 			if username == "admin@email.com" and request.form["password"] == "admin":
 				session = DBSession()
 				video = session.query(Videos).all()
+                user_admin = User()
+                user_admin.id = 25
+                login_user(user)
 				return render_template("admin_dashboard.html", videos = video)
 			elif user is not None and password_value == user.password:
 				login_user(user)
