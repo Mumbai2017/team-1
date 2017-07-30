@@ -124,18 +124,27 @@ var datetime = "" + currentdate.getDate() + "/"
             </div>
 			
         </div>
-		<form name="comment_form" action="">
-			<textarea rows="4" cols="100" placeholder="Add a comment"></textarea>
+		<form action="{{ url_for('comments') }}" method="POST">
+			<textarea name="comment" type="text" rows="4" cols="100" placeholder="Add a comment"></textarea>
 			<input type="text"  id="time" name="time">
 			<input type="text"  id="video_id" name="video_link">
-			
+            <input type="submit" name="submit" value="Submit" class="btn btn-success">
 		</form>
-		<div class="well well-lg">
-				<div id="username">A
-				<span id="timestmp">B
-				</span></div>
-    <div id="comments" style="margin-top:10px">C</div>
-	</div>
+		{% if comments | length >=1 %}
+            {% for comment in comments %}
+            <div class="well well-lg">
+                <div id="username">{{ comment.user_id }} -
+                    <span id="timestmp">{{ comment.timestamp }}
+                    </span>
+                </div>
+                <div id="comments" style="margin-top:10px">
+                    {{ comment.data }}
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>There are no comments!!</p>
+        {% endif %}
 </div>
 </body>
 </html>

@@ -139,23 +139,24 @@ def add_video(videoid):
 @login_required
 def video_detail(link):
 	session = DBSession()
-	comments_array = session.query(Comment).filter_by(video_id = link).all()
+	comments_array = session.query(Comment).filter_by(video_id = "https://www.youtube.com/embed/" + link).all()
 	return render_template("comments.html", video_link = "https://www.youtube.com/embed/" + link, comments = comments_array)
 
 @application.route("/comments", methods = ["GET", "POST"])
 def comments():
 	try:
 		if request.method == "POST":
-			session = Session()
-			comment = request.form["comment"]
-			time = request.form["time"]
-			video = request.form["video_id"]
-			comment_value = Comment(data = comment, timestamp = time, video_id = video, user_id = current_user.get_id(), parent_id = null)
+			session = DBSession()
+			comment = request.form.get("comment", None)
+			time = request.form.get("time", None)
+			video = request.form.get("video_link",None)
+			comment_value = Comment(data = comment, timestamp = time, video_id = video, user_id = current_user.get_id(), parent_id = 1)
 			session.add(comment_value)
 			session.commit()
-			return redirect(url_for("video_detail" + "/" + video))
-	except Exception as e:
-		raise e
+			data = ["video_detail", video]
+			return redirect(url_for('lesson_detail'))
+ 	except Exception as e:
+		print e
 
 @application.route("/logout")
 @login_required
