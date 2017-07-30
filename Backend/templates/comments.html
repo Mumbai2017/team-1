@@ -5,7 +5,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function () {
+		
+		var currentdate = new Date(); 
+var datetime = "" + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+				
+		//$("time").val(datetime);
+		document.getElementById('time').value=datetime;
+		var src_file_id = $("iframe").attr("src");
+		$("#video_id").attr("value",src_file_id);
+		document.getElementById('time').style.visibility='hidden';
+		document.getElementById('video_id').style.visibility='hidden';
+
+});
+	</script>
+	</head>
 <style>
     /*font Awesome http://fontawesome.io*/
     @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
@@ -84,6 +105,7 @@
     }
     .comment-list .comment-post {
         margin-top: 6px;
+		
     }
 </style>
 <body>
@@ -100,8 +122,20 @@
             <div class="col-md-8">
                 <h2 class="page-header">Comments</h2>
             </div>
+			
         </div>
-    </div>
+		<form name="comment_form" action="">
+			<textarea rows="4" cols="100" placeholder="Add a comment"></textarea>
+			<input type="text"  id="time" name="time">
+			<input type="text"  id="video_id" name="video_link">
+			
+		</form>
+		<div class="well well-lg">
+				<div id="username">A
+				<span id="timestmp">B
+				</span></div>
+    <div id="comments" style="margin-top:10px">C</div>
+	</div>
 </div>
 </body>
 </html>
