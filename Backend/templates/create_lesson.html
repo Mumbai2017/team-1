@@ -184,7 +184,9 @@ var datetime = "" + currentdate.getDate() + "/"
 	<form action="{{ url_for('lesson_plan') }}" name="add_lesson" method="POST" enctype = "multipart/form-data">
     <div class="form-group">
       <label for="email">Unit:</label>
-      <input type="text" class="form-control" id="unit" placeholder="Enter Unit" name="unit">
+      <select name="grade" class="form-control" id="grade">
+  <option value="Maths">Maths</option>
+  <option value="English">English</option></select>
     </div>
     <div class="form-group">
       <label for="title">Title:</label>
@@ -196,7 +198,18 @@ var datetime = "" + currentdate.getDate() + "/"
     </div>
 	<div class="form-group">
       <label for="grade">Class/Grade:</label>
-      <input type="text" class="form-control" id="grade" placeholder="Enter Grade" name="grade">
+      <select name="grade" class="form-control" id="grade">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
     </div>
 	<div class="form-group">
       <label for="description">Description:</label>
