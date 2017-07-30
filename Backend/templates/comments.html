@@ -1,4 +1,4 @@
-<html><head>
+<html><head><title>My Videos | CEQUE</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -125,10 +125,10 @@ var datetime = "" + currentdate.getDate() + "/"
 			
         </div>
 		<form action="{{ url_for('comments') }}" method="POST">
-			<textarea name="comment" type="text" rows="4" cols="100" placeholder="Add a comment"></textarea>
+			<textarea class="form-control" name="comment" type="text" rows="4" cols="100" placeholder="Add a comment"></textarea>
 			<input type="text"  id="time" name="time">
 			<input type="text"  id="video_id" name="video_link">
-            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+            <input type="submit" name="submit" value="Submit" class="btn btn-success pull-right">
 		</form>
 		{% if comments | length >=1 %}
             {% for comment in comments %}
