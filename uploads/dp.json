@@ -1,0 +1,112 @@
+{
+  "objects": [
+    {
+      "*password": "#{*myRDSPassword}",
+      "name": "rds_mysql",
+      "jdbcProperties": "allowMultiQueries=true",
+      "id": "rds_mysql",
+      "type": "RdsDatabase",
+      "rdsInstanceId": "#{myRDSInstanceId}",
+      "username": "#{myRDSUsername}"
+    },
+    {
+      "database": {
+        "ref": "rds_mysql"
+      },
+      "name": "SourceRDSTable",
+      "id": "SourceRDSTable",
+      "type": "SqlDataNode",
+      "table": "#{myRDSTableName}",
+      "selectQuery": "select * from #{table} where #{myRDSTableLastModifiedCol} >= '#{format(@scheduledStartTime, 'YYYY-MM-dd HH-mm-ss')}' and #{myRDSTableLastModifiedCol} <= '#{format(@scheduledEndTime, 'YYYY-MM-dd HH-mm-ss')}'"
+    },
+    {
+      "output": {
+        "ref": "DestinationS3Location"
+      },
+      "input": {
+        "ref": "SourceRDSTable"
+      },
+      "name": "RDSToS3CopyActivity",
+      "workerGroup": "rajendra-dp-poc",
+      "id": "RDSToS3CopyActivity",
+      "runsOn": {
+        "ref": "Ec2Instance"
+      },
+      "type": "CopyActivity"
+    },
+    {
+      "failureAndRerunMode": "CASCADE",
+      "resourceRole": "DataPipelineDefaultResourceRole",
+      "role": "DataPipelineDefaultRole",
+      "pipelineLogUri": "s3://saptarsi-search-new/",
+      "scheduleType": "ONDEMAND",
+      "name": "Default",
+      "id": "Default"
+    },
+    {
+      "directoryPath": "#{myOutputS3Loc}/#{format(@scheduledStartTime, 'YYYY-MM-dd-HH-mm-ss')}",
+      "name": "DestinationS3Location",
+      "id": "DestinationS3Location",
+      "type": "S3DataNode"
+    }
+  ],
+  "parameters": [
+    {
+      "helpText": "Name of the column that stores the last modified time value in the RDS MySQL table.",
+      "description": "Last modified column name",
+      "id": "myRDSTableLastModifiedCol",
+      "type": "String"
+    },
+    {
+      "description": "RDS MySQL password",
+      "id": "*myRDSPassword",
+      "type": "String"
+    },
+    {
+      "description": "RDS MySQL table name",
+      "id": "myRDSTableName",
+      "type": "String"
+    },
+    {
+      "description": "Output S3 folder",
+      "id": "myOutputS3Loc",
+      "type": "AWS::S3::ObjectKey"
+    },
+    {
+      "watermark": "security group name",
+      "helpText": "The names of one or more EC2 security groups that have access to the RDS cluster.",
+      "description": "RDS MySQL security group(s)",
+      "isArray": "true",
+      "optional": "true",
+      "id": "myEc2RdsSecurityGrps",
+      "type": "String"
+    },
+    {
+      "description": "RDS MySQL username",
+      "id": "myRDSUsername",
+      "type": "String"
+    },
+    {
+      "default": "t1.micro",
+      "helpText": "The type of the EC2 instance that will be launched on your behalf to do the copy",
+      "description": "EC2 instance type",
+      "id": "myEC2InstanceType",
+      "type": "String"
+    },
+    {
+      "watermark": "DB Instance",
+      "description": "RDS Instance ID",
+      "id": "myRDSInstanceId",
+      "type": "String"
+    }
+  ],
+  "values": {
+    "myRDSInstanceId": "test-rajendra-dp",
+    "myRDSUsername": "subdev",
+    "myRDSTableLastModifiedCol": "last_update_date",
+    "myEC2InstanceType": "t2.micro",
+    "myOutputS3Loc": "s3://saptarsi-search-new/",
+    "*myRDSPassword": "subdev123",
+    "myRDSTableName": "user_payments"
+  }
+}

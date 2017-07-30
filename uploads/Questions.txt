@@ -1,0 +1,14 @@
+Questions to discus  with Amit
+
+1) Progress made on the project in terms of code and bench marking progress.
+2) Hotstar email account problem with Microsoft Bing translator api.
+3) Any problem if I use my personal email account with Bing API.
+4) Solution for Google Paid Transltor API.
+5) Also talk about the grammar in the source subtitle. 
+ With an example for the "Mark" subtitle.
+ 
+
+
+DeepLearning Doubts — 
+1) Validation test set size
+2) Cross Entropy
