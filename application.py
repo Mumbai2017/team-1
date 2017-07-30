@@ -31,7 +31,9 @@ def login():
 			user = session.query(User).filter_by(email = username).first()
 			password_value = (hashlib.md5(request.form["password"].encode())).hexdigest()
 			if username == "admin@email.com" and request.form["password"] == "admin":
-				return render_template("admin_dashboard.html")
+                session = DBSession()
+                video = session.query(Videos).all()
+				return render_template("admin_dashboard.html", videos = video)
 			elif user is not None and password_value == user.password:
 				login_user(user)
 				return redirect(url_for("dashboard"))

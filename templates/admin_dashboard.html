@@ -10,26 +10,26 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
-        
+
     #custom-search-form {
         margin:0;
         margin-top: 5px;
         padding: 0;
     }
- 
+
     #custom-search-form .search-query {
         padding-right: 3px;
         padding-right: 4px \9;
         padding-left: 3px;
         padding-left: 4px \9;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
- 
+
         margin-bottom: 0;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
- 
+
     #custom-search-form button {
         border: 0;
         background: none;
@@ -44,16 +44,16 @@
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
- 
+
     .search-query:focus + button {
-        z-index: 3;   
+        z-index: 3;
     }
 
     .page-header{
     background-image:url("static/ceque-logo.jpg");
     background-repeat: no-repeat;
     height: 100px;
-    
+
 }
 
     </style>
@@ -66,7 +66,7 @@
 </head>
 <body>
 
-      
+
     </ul>
   </div>
 </nav>
@@ -75,7 +75,7 @@
     <div class="page-header">
     </div>
     <p>Hello Admin!</p>
-    
+
     <br>
     <br>
     <div class="row">
@@ -85,15 +85,15 @@
             <button class="btn"><i class="glyphicon glyphicon-search"></i>
             </button>
         </div>
-            
-        
+
+
         <div class="col-md-3">
          <h2>By Unit</h2><i class="material-icons" style="font-size:20px">language</i>
             <input type="text" class="search-query" placeholder="Search Unit">
                     <button  class="btn"><i class="glyphicon glyphicon-search"></i></button>
               </div>
-        
-        
+
+
         <div class="col-md-3">
          <h2>By Location</h2><i class="material-icons" style="font-size:20px">room</i>
          <input type="text" class="search-query" placeholder="Search Location">
@@ -101,7 +101,28 @@
         </div>
                     </div>
 </div></form>
-    
+
+{% if videos | length >= 1 %}
+<div class="col-md-12">
+    <div class="row">
+        {% for video in videos %}
+        {% set placeholder_text = ["https://www.youtube.com/embed", video.video_link ] %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <a href="{{ url_for ('video_detail', link = video.video_link ) }}">
+                    <h3 class="panel-title">Video</h3></a>
+                  </div>
+                  <div class="panel-body">
+                     <iframe width="320" height="250"
+                        src="{{ placeholder_text | join('/') }}">
+                     </iframe>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>    
 
 </body>
 </html>

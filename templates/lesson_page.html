@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
-        
+
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
 }
@@ -49,7 +49,7 @@
     border-color: #ddd;
 }
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a {
-    color: #777;   
+    color: #777;
 }
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
@@ -90,7 +90,7 @@
     border-color: #3071a9;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
-    color: #fff;   
+    color: #fff;
 }
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
 .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
@@ -152,16 +152,16 @@
 	background-image:url("static/ceque-logo.jpg");
 	background-repeat: no-repeat;
 	height: 100px;
-	
+
 }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="page-header">
-        
+
     </div>
-	
+
     <div class="col-md-12">
         <div class="col-md-4">
             <button class="btn btn-info" id="revision">Revisions</button>
@@ -174,6 +174,7 @@
     <br>
     <br>
     <div id="data">
+      <p>Latest videos</p>
         {% if videos | length >= 1 %}
         <div class="col-md-12">
             <div class="row">
@@ -233,7 +234,6 @@
         $("#revision").click(function(){
             $("#revisions").show();
             $("#data").hide();
-        })      
+        })
 });
 </script>
-
