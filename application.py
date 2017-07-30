@@ -33,7 +33,7 @@ def login():
 			if username == "admin@email.com" and request.form["password"] == "admin":
 				session = DBSession()
 				video = session.query(Videos).all()
-				user_admin = User()
+				user_admin = User(email = "admin@email.com", password = "admin")
 				user_admin.id = 25
 				login_user(user)
 				return render_template("admin_dashboard.html", videos = video)
