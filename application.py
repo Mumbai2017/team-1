@@ -161,6 +161,11 @@ def comments():
 			session.add(comment_value)
 			session.commit()
 			data = ["video_detail", video]
+			if (current_user.email == "admin@email.com"):
+				session = DBSession()
+				video = session.query(Videos).all()
+				login_user(user)
+				return render_template("admin_dashboard.html", videos = video)
 			return redirect(url_for('lesson_detail'))
  	except Exception as e:
 		print e
