@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
-from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession 
+from database_setup import Pics, LessonPlan, User, Videos, Tag, Comment,DBSession
 from werkzeug import secure_filename
 import os
 from flask_login import LoginManager, UserMixin,login_required, login_user, logout_user, current_user
@@ -67,7 +67,7 @@ def signup():
 		else:
 			return render_template("login.html")
 	except Exception as e:
-		raise e 
+		raise e
 
 
 @application.route("/dashboard", methods = ["GET", "POST"])
@@ -172,4 +172,3 @@ if __name__ == "__main__":
 	#application.run(debug=True)
 	#application.run(host="0.0.0.0", port=8080)
 	application.run(host = '0.0.0.0', port = int(os.environ.get("PORT")))
-
